@@ -1,3 +1,36 @@
+* {
+  box-sizing: border-box;
+}
+
 h1 {
-  background-color: blue;
+  background-color: red;
+}
+
+#container {
+  margin: 0 auto;
+  width: 50%;
+  height: 400px;
+  border: 3px solid green;
+  padding: 10px;
+}
+
+.inner-boxes, .p1-image, .p2-image {
+  display: inline-block;
+  width: 30%;
+  height: 30%;
+  margin: 5px 5px;
+  text-align: center;
+  background-color: orange;
+}
+
+.p1-image {
+  content:url( http://www.clker.com/cliparts/e/0/f/4/12428125621652493290X_mark_18x18_02.svg.hi.png);
+  width: 30%;
+  padding: 3%;
+}
+
+.p2-image {
+  content:url( http://graffitialphabet.org/letter-o/crazy-graffiti-alphabet-o.jpg);
+  width: 30%;
+  padding: 3%;
 }
