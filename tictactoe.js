@@ -2,52 +2,106 @@ console.log('TicTacToe');
 
 var container = document.querySelector('#container');
 var playerNum = document.querySelector('#player-number');
+var click = document.getElementById("click");
+var click2 = document.getElementById("click2");
+var win = document.getElementById("win");
 var board = [4,5,6,7,8,9,10,11,12];
+var winCombs = [
+  [0,1,2],
+  [3,4,5],
+  [6,7,8],
+  [0,3,6],
+  [1,4,7],
+  [2,5,8],
+  [0,4,8],
+  [2,4,6]
+];
 var gameType = 'P1vsComp';
 var turn = true;
 var p1Tally = 0;
 var p2Tally = 0;
 var CompTally = 0;
+var actionAllowed = true;
+var winningArray = 0;
 
-//Player 1 vs Player 2
+//Check whether can play in position and whether actions are allowed.
 
 function checkPosition (event) {
-  var position = event.target.id.slice(4,5);
-  if (board[position] > 3) {
-    if (turn) {
-      board[position] = 1;
-      turn = false;
-    } else if (turn === false) {
-      board[position] = 2;
-      turn = true;
+  if (actionAllowed) {
+    click.play();
+    if (gameType === 'P1vsComp') {
+      actionAllowed = false;
+    }
+    var position = event.target.id.slice(4,5);
+    if (board[position] > 3) {
+      if (turn) {
+        board[position] = 1;
+        turn = false;
+      } else if (turn === false) {
+        board[position] = 2;
+        turn = true;
+      }
+    }
+    displayBoard();
+    var item = winCombs.some(checkWin);
+    if (item) { // this does not apply for computer?
+      win.play();
+      actionAllowed = false;
+      winPop();
+      addTally();
+      turn = null; // I think this might create problems for me later on.
+      setTimeout(resetBoard, 2000);
+    } else if (!item && draw()) {
+      drawSound.play();
+      drawPop();
+      actionAllowed = false;
+      setTimeout(resetBoard, 2000);
+    } else {
+      compMove();
     }
   }
-  displayBoard();
-  checkWin();
 }
 
-function checkWin() {
-  var total = board.reduce(function(a, b) { // This variable is to check if there is a draw, see below.
-  return a + b;
-  }, 0);
-
-  if ((board[0] === board[1] && board[1] === board[2]) || // Check Row 1
-  (board[3] === board[4] && board[4] === board[5]) || // Check Row 2
-  (board[6] === board[7] && board[7] === board[8]) || // Check Row 3
-  (board[0] === board[3] && board[3] === board[6]) || // Check Column 1
-  (board[1] === board[4] && board[4] === board[7]) || // Check Column 2
-  (board[2] === board[5] && board[5] === board[8]) || // Check Column 3
-  (board[0] === board[4] && board[4] === board[8]) || // Check Diagonal 1
-  (board[2] === board[4] && board[4] === board[6])) { // Check Diagonal 2
-    addTally();
-    turn = null; // I think this might create problems for me later on.
-    setTimeout(resetBoard, 1000);
-  }  else if (total === 13) {
-    console.log("Its a draw");
-    setTimeout(resetBoard, 1000);
+function checkWin (item, i) {
+  if ((board[item[0]] === board[item[1]]) && (board[item[1]] === board[item[2]])) {
+    winningArray = i;
+    return item;
   }
+  return false;
+}
+
+function draw() {
+  var total = board.reduce(function(a, b) {return a + b;}, 0);
+  if (total === 13) {
+      return true;
+    } else {
+      return false;
+    }
+}
+
+function compMove() {
   if ((gameType === 'P1vsComp') && (turn === false)) {
-    setTimeout(compMove, 1000);
+    // setTimeout(function(){
+      for (var i=0; i < board.length; i++) {
+        if ((board[i] !== 1) && (board[i] !== 2)) {
+          board[i] = 2;
+          break;
+        }
+      }
+      click2.play();
+      turn = true;
+      displayBoard();
+      var item = winCombs.some(checkWin);
+    // }, 500);
+      actionAllowed = true;
+
+      if (item) {
+      win.play();
+      winPop();
+      addTally();
+      turn = null;
+      setTimeout(resetBoard, 2000);
+    }
   }
 }
 
@@ -62,27 +116,11 @@ function addTally () {
   document.querySelector('#other-score').innerHTML = p2Tally;
 }
 
-container.addEventListener('click', checkPosition);
-
 // Player 1 vs Computer
-
-// xxxx.addEventListener('click', compStart);
 
 function CompStart () {
   gameType = 'P1vsComp';
   checkPosition();
-}
-
-function compMove () {
-  for (var i=0; i < board.length; i++) {
-    if ((board[i] !== 1) && (board[i] !== 2)) {
-      board[i] = 2;
-      break;
-    }
-  }
-  turn = true;
-  displayBoard();
-  checkWin();
 }
 
 // Manipulating DOM - Separation of concerns
@@ -106,19 +144,34 @@ function displayBoard () {
   }
 }
 
-// Need to add trigger for this.
 function resetBoard () {
   board = [4,5,6,7,8,9,10,11,12];
   turn = true;
+  for (i=0; i<board.length;i++) {
+    document.querySelector('#box-' + i).className = 'inner-boxes';
+  }
   displayBoard();
+  actionAllowed = true;
 }
 
-displayBoard(); // At the beginning of the game, this will show who's turn it is. Otherwise, neither score is bold.
+
+function winPop() {
+  for (i = 0; i < winCombs[winningArray].length; i++) {
+    document.querySelector('#box-' + winCombs[winningArray][i]).className = 'inner-boxes animated.rubberBand';
+  }
+}
+
+function drawPop() {
+  for (i=0; i<board.length;i++) {
+    document.querySelector('#box-' + i).className = 'inner-boxes pop';
+  }
+}
 
 playerNum.addEventListener('click', changeGameType);
 
 function changeGameType () {
   resetScores();
+  resetBoard();
   if (gameType === 'P1vsComp') {
     document.querySelector('#player-number').src = 'twoplayer.png';
     gameType = 'P1vsP2';
@@ -133,25 +186,17 @@ function resetScores() {
   document.querySelector('#other-score').innerHTML = '0';
 }
 
+displayBoard(); // At the beginning of the game, this will show who's turn it is. Otherwise, neither score is bold.
 
-// Initially inserted the image by changing the class based on someone's click rather than based on the board array. But with a computer opponent, I couldn't rely on a click in a div to change the image, so I decided to just use the refresh page method.
-
-// function insertImage (event) {
-//   console.log(event.target.className);
-//   if (turn) {
-//     event.target.className="p2-image";
-//   } else {
-//     event.target.className="p1-image";
-//   }
-// }
-
+// Trigger - Player 1 always starts.
+container.addEventListener('click', checkPosition);
 
 // functions:
-// player's score is bold when it is their turn
-// 0 and X pop out
-// sounds
-// icons
+// computer not winning.
+// smaller screen - winning combo does not grow.
+// can put a O after your move for comp.
+// reorganise code into sections.
+// sound not playing when computer places O
 // flashes winning line when someone has won.
 // improve computer player logic
-// remember tally and positions when page is refreshed
 // When explaining - say really refactored code so is KISS, DRY, Separation of Concerns.
