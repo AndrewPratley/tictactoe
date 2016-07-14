@@ -1,36 +1,83 @@
 * {
   box-sizing: border-box;
-}
-
-h1 {
-  background-color: red;
+  background-color: black;
+  font-family: 'Lato', sans-serif;
 }
 
 #container {
-  margin: 0 auto;
-  width: 50%;
-  height: 400px;
-  border: 3px solid green;
-  padding: 10px;
+  margin: 9em auto 0px auto;
+  width: 30em;
+  height: 30em;
 }
 
-.inner-boxes, .p1-image, .p2-image {
+.inner-boxes {
   display: inline-block;
   width: 30%;
   height: 30%;
-  margin: 5px 5px;
+  margin: 0px 0px;
   text-align: center;
-  background-color: orange;
+  border-color: white;
+  color: white;
+  font-size: 7em;
+  vertical-align: top;
+
 }
 
-.p1-image {
-  content:url( http://www.clker.com/cliparts/e/0/f/4/12428125621652493290X_mark_18x18_02.svg.hi.png);
-  width: 30%;
-  padding: 3%;
+#box-0, #box-3, #box-6 {
+  border-right: 1px solid white;
 }
 
-.p2-image {
-  content:url( http://graffitialphabet.org/letter-o/crazy-graffiti-alphabet-o.jpg);
-  width: 30%;
-  padding: 3%;
+#box-0, #box-1, #box-2, #box-3, #box-4, #box-5 {
+  border-bottom: 1px solid white;
+}
+
+#box-3, #box-4, #box-5 {
+  border-top: 1px solid white;
+}
+
+#box-1, #box-4, #box-7 {
+  border-right: 1px solid white;
+  border-left: 1px solid white;
+}
+
+#box-2, #box-5, #box-8 {
+  border-left: 1px solid white;
+}
+
+#box-6, #box-7, #box-8 {
+  border-top: 1px solid white;
+}
+
+#container_2 {
+  width: 30em;
+  /*border: solid white 1px;*/
+  margin: 0 auto;
+}
+
+p {
+  color: white;
+  display: inline;
+  font-size: 3em;
+  font-weight: 100;
+}
+
+#player-score {
+  margin: 0 3.5em 0 2.1em;
+}
+
+#other-score {
+  margin:0;
+}
+
+.turn {
+  font-weight:normal;
+}
+
+img {
+  display: inline;
+  width: 2em;
+  margin: 0 0 0 4.5em;
+  -webkit-filter: invert(1);
+  filter: invert(1);
+  background-color: white;
 }
