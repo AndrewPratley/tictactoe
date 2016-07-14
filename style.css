@@ -113,4 +113,7 @@ img {
     font-size: 4.1em;
     padding-top: 0.1em;
   }
+  #container {
+    margin-top: 6em;
+  }
 }
