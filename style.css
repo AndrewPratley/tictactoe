@@ -12,15 +12,14 @@
 
 .inner-boxes {
   display: inline-block;
-  width: 30%;
-  height: 30%;
-  margin: 0px 0px;
+  width: 32%;
+  height: 32%;
+  margin: 0px auto;
   text-align: center;
   border-color: white;
   color: white;
   font-size: 7em;
   vertical-align: top;
-
 }
 
 #box-0, #box-3, #box-6 {
@@ -51,7 +50,7 @@
 #container_2 {
   width: 30em;
   /*border: solid white 1px;*/
-  margin: 0 auto;
+  margin: 2em auto 0 auto;
 }
 
 p {
@@ -62,7 +61,7 @@ p {
 }
 
 #player-score {
-  margin: 0 3.5em 0 2.1em;
+  margin: 0 3.35em 0 2.5em;
 }
 
 #other-score {
@@ -82,6 +81,14 @@ img {
   background-color: white;
 }
 
+/*footer {
+  color: white;
+  font-size: 1em;
+  font-weight: 100;
+  text-align: right;
+  margin-top: 5em;
+}*/
+
 @media(max-width:30em) {
   #container {
     width: 20em;
@@ -91,7 +98,7 @@ img {
     width: 20em;
   }
   #player-score {
-    margin: 0 2.1em 0 1.9em;
+    margin: 0 2.35em 0 2em;
     font-size: 2.5em;
   }
   #other-score {
@@ -101,5 +108,9 @@ img {
   img {
     margin: 0 0 0 3em;
     width: 1.5em;
+  }
+  .inner-boxes {
+    font-size: 4.1em;
+    padding-top: 0.1em;
   }
 }
