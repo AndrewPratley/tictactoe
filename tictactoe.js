@@ -60,7 +60,9 @@ function checkPosition (event) {
       actionAllowed = false;
       setTimeout(resetBoard, 2000);
     } else {
-      compMove();
+      setTimeout(function() {
+        compMove();
+      }, 500);
     }
   }
 }
@@ -217,6 +219,5 @@ playerNum.addEventListener('click', changeGameType);
 
 // functions:
 // win bouncing borders as well.
-// delay for computer move
 // improve computer player logic
 // When explaining - say really refactored code so is KISS, DRY, Separation of Concerns.

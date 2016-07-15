@@ -25,7 +25,6 @@ I sure enjoyed it though and super happy with the outcome :)
 
 Unsolved Problems:
 
-- Delay for the computer move so it isn't so instant. I initally used setTimer but it created a lot of flow on problems.
 - The lines also vibrate when a win happens - I presume wrapping the 'X' or 'O' in a paragraph tag inside the div tag and only animating the paragraph tag will solve this.
 - There is considerable room for the computer player logic to improve. Would be cool to implement the mini-max algorithm.
 
