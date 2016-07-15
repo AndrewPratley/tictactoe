@@ -191,7 +191,7 @@ function winPop() {
 
 function drawPop() {
   for (i=0; i<board.length;i++) {
-    document.querySelector('#box-' + i).className = 'inner-boxes animated shake';
+    document.querySelector('#box-' + i).className = 'inner-boxes animated swing';
   }
 }
 

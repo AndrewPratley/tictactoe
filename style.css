@@ -10,40 +10,41 @@
   height: 30em;
 }
 
-.inner-boxes {
+.containerboxes {
   display: inline-block;
   width: 32%;
   height: 32%;
+  padding: 5%;
   margin: 0px auto;
   text-align: center;
   color: white;
   border-color: white;
-  font-size: 7em;
+  font-size: 5.5em;
   vertical-align: top;
 }
 
-#box-0, #box-3, #box-6 {
+#box-0-out, #box-3-out, #box-6-out {
   border-right: 1px solid white;
 }
 
-#box-0, #box-1, #box-2, #box-3, #box-4, #box-5 {
+#box-0-out, #box-1-out, #box-2-out, #box-3-out, #box-4-out, #box-5-out {
   border-bottom: 1px solid white;
 }
 
-#box-3, #box-4, #box-5 {
+#box-3-out, #box-4-out, #box-5-out {
   border-top: 1px solid white;
 }
 
-#box-1, #box-4, #box-7 {
+#box-1-out, #box-4-out, #box-7-out {
   border-right: 1px solid white;
   border-left: 1px solid white;
 }
 
-#box-2, #box-5, #box-8 {
+#box-2-out, #box-5-out, #box-8-out {
   border-left: 1px solid white;
 }
 
-#box-6, #box-7, #box-8 {
+#box-6-out, #box-7-out, #box-8-out {
   border-top: 1px solid white;
 }
 
@@ -85,6 +86,7 @@ img {
   #container {
     width: 20em;
     height: 20em;
+    margin-top: 6em;
   }
   #container_2 {
     width: 20em;
@@ -101,11 +103,8 @@ img {
     margin: 0 0 0 3em;
     width: 1.5em;
   }
-  .inner-boxes {
-    font-size: 4.1em;
-    padding-top: 0.1em;
-  }
-  #container {
-    margin-top: 6em;
+  .containerboxes {
+    font-size: 3.6em;
+    padding-top: 0.2em;
   }
 }

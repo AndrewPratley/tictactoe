@@ -25,8 +25,8 @@ I sure enjoyed it though and super happy with the outcome :)
 
 ##Unsolved Problems
 
-- The lines also vibrate when a win happens - I presume wrapping the 'X' or 'O' in a div tag inside another div tag and only animating the paragraph tag will solve this.
 - There is considerable room for the computer player logic to improve. Would be cool to implement the mini-max algorithm.
+- Could have some more features
 
 ##Installation Instructions:
 
