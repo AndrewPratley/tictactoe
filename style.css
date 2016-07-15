@@ -10,7 +10,7 @@
   height: 30em;
 }
 
-.containerboxes {
+.outer-boxes {
   display: inline-block;
   width: 32%;
   height: 32%;
@@ -103,7 +103,7 @@ img {
     margin: 0 0 0 3em;
     width: 1.5em;
   }
-  .containerboxes {
+  .outer-boxes {
     font-size: 3.6em;
     padding-top: 0.2em;
   }

@@ -24,7 +24,7 @@ var CompTally = 0;
 var actionAllowed = true;
 var winningArray = 0;
 
-// Sound variables
+// Audio variables
 
 var click = document.getElementById("click");
 var click2 = document.getElementById("click2");
@@ -220,8 +220,3 @@ container.addEventListener('click', checkPosition);
 // Trigger for changing game type (P1vsP2 or P1vsComp)
 
 playerNum.addEventListener('click', changeGameType);
-
-// functions:
-// win bouncing borders as well.
-// improve computer player logic
-// Refactored code so is KISS, DRY, Separation of Concerns.
