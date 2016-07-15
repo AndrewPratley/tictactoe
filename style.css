@@ -23,10 +23,6 @@
   transition:.5s linear .5s;
 }
 
-.pop {
-  font-size: 9em;
-}
-
 #box-0, #box-3, #box-6 {
   border-right: 1px solid white;
 }

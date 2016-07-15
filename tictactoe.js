@@ -1,5 +1,8 @@
 console.log('TicTacToe');
 
+
+//Variables
+
 var container = document.querySelector('#container');
 var playerNum = document.querySelector('#player-number');
 var click = document.getElementById("click");
@@ -52,7 +55,7 @@ function checkPosition (event) {
       turn = null; // I think this might create problems for me later on.
       setTimeout(resetBoard, 2000);
     } else if (!item && draw()) {
-      drawSound.play();
+      win.play();
       drawPop();
       actionAllowed = false;
       setTimeout(resetBoard, 2000);
@@ -62,6 +65,8 @@ function checkPosition (event) {
   }
 }
 
+//Check whether there is a win
+
 function checkWin (item, i) {
   if ((board[item[0]] === board[item[1]]) && (board[item[1]] === board[item[2]])) {
     winningArray = i;
@@ -70,6 +75,8 @@ function checkWin (item, i) {
   return false;
 }
 
+//Check whether there is a draw
+
 function draw() {
   var total = board.reduce(function(a, b) {return a + b;}, 0);
   if (total === 13) {
@@ -77,6 +84,13 @@ function draw() {
     } else {
       return false;
     }
+}
+
+//Computer Bad-Ass Genius Happening Here.
+
+function CompStart () {
+  gameType = 'P1vsComp';
+  checkPosition();
 }
 
 function compMove() {
@@ -105,7 +119,8 @@ function compMove() {
   }
 }
 
-// Adds Win to Tally
+// Adds win to Tally
+
 function addTally () {
   if (turn) {
     p2Tally += 1;
@@ -116,14 +131,9 @@ function addTally () {
   document.querySelector('#other-score').innerHTML = p2Tally;
 }
 
-// Player 1 vs Computer
-
-function CompStart () {
-  gameType = 'P1vsComp';
-  checkPosition();
-}
-
 // Manipulating DOM - Separation of concerns
+
+//Refreshing the board based on the what is in the board array
 
 function displayBoard () {
   for (var i=0; i<board.length; i++) {
@@ -144,6 +154,8 @@ function displayBoard () {
   }
 }
 
+//Resets the board when the game is over or if gameType is changed
+
 function resetBoard () {
   board = [4,5,6,7,8,9,10,11,12];
   turn = true;
@@ -154,20 +166,30 @@ function resetBoard () {
   actionAllowed = true;
 }
 
+// Resets the scores when gameType is changed
+
+function resetScores() {
+  document.querySelector('#player-score').innerHTML = '0';
+  document.querySelector('#other-score').innerHTML = '0';
+}
+
+//Animation for winning line
 
 function winPop() {
   for (i = 0; i < winCombs[winningArray].length; i++) {
-    document.querySelector('#box-' + winCombs[winningArray][i]).className = 'inner-boxes animated.rubberBand';
+    document.querySelector('#box-' + winCombs[winningArray][i]).className = 'inner-boxes animated rubberBand';
   }
 }
+
+//Animation for a draw/tie
 
 function drawPop() {
   for (i=0; i<board.length;i++) {
-    document.querySelector('#box-' + i).className = 'inner-boxes pop';
+    document.querySelector('#box-' + i).className = 'inner-boxes animated shake';
   }
 }
 
-playerNum.addEventListener('click', changeGameType);
+// Change the type of the game i.e. P1vsComp or P1vsP2
 
 function changeGameType () {
   resetScores();
@@ -181,22 +203,20 @@ function changeGameType () {
   }
 }
 
-function resetScores() {
-  document.querySelector('#player-score').innerHTML = '0';
-  document.querySelector('#other-score').innerHTML = '0';
-}
+// At beginning of game - refresh the board - this will show's who's turn it is.
 
-displayBoard(); // At the beginning of the game, this will show who's turn it is. Otherwise, neither score is bold.
+displayBoard();
 
-// Trigger - Player 1 always starts.
+// Trigger - Player 1 always starts
+
 container.addEventListener('click', checkPosition);
 
+// Trigger for changing game type (P1vsP2 or P1vsComp)
+
+playerNum.addEventListener('click', changeGameType);
+
 // functions:
-// computer not winning.
-// smaller screen - winning combo does not grow.
-// can put a O after your move for comp.
-// reorganise code into sections.
-// sound not playing when computer places O
-// flashes winning line when someone has won.
+// win bouncing borders as well.
+// delay for computer move
 // improve computer player logic
 // When explaining - say really refactored code so is KISS, DRY, Separation of Concerns.
