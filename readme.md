@@ -38,4 +38,11 @@ Installation Instructions:
 
 Other:
 
-- I installed lolcommits as as well - which takes a picture every time I make a commit which is just a bit of fun. You can see my pics in the lolcommits folder in the master folder :P
+- I installed lolcommits as as well - which takes a picture every time I make a commit which is just a bit of fun.
+
+
+Credits:
+
+- Computer Error Sound - License: Attribution 3.0 | Recorded by Mike Koenig
+- Robot Blip Sounds - License: Attribution 3.0 | Recorded by Marianne Gagnon
+- People Icons made by Freepik in Interface and People from www.flaticon.com

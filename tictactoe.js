@@ -1,13 +1,10 @@
 console.log('TicTacToe');
 
 
-//Variables
+// General variables
 
 var container = document.querySelector('#container');
 var playerNum = document.querySelector('#player-number');
-var click = document.getElementById("click");
-var click2 = document.getElementById("click2");
-var win = document.getElementById("win");
 var board = [4,5,6,7,8,9,10,11,12];
 var winCombs = [
   [0,1,2],
@@ -27,7 +24,14 @@ var CompTally = 0;
 var actionAllowed = true;
 var winningArray = 0;
 
-//Check whether can play in position and whether actions are allowed.
+// Sound variables
+
+var click = document.getElementById("click");
+var click2 = document.getElementById("click2");
+var drawSound = document.getElementById("draw");
+var win = document.getElementById("win");
+
+// Main function that runs through the game and runs a number of sub functions where required.
 
 function checkPosition (event) {
   if (actionAllowed) {
@@ -55,7 +59,7 @@ function checkPosition (event) {
       turn = null; // I think this might create problems for me later on.
       setTimeout(resetBoard, 2000);
     } else if (!item && draw()) {
-      win.play();
+      drawSound.play();
       drawPop();
       actionAllowed = false;
       setTimeout(resetBoard, 2000);
@@ -67,7 +71,7 @@ function checkPosition (event) {
   }
 }
 
-//Check whether there is a win
+// Check whether there is a win
 
 function checkWin (item, i) {
   if ((board[item[0]] === board[item[1]]) && (board[item[1]] === board[item[2]])) {
@@ -77,7 +81,7 @@ function checkWin (item, i) {
   return false;
 }
 
-//Check whether there is a draw
+// Check whether there is a draw
 
 function draw() {
   var total = board.reduce(function(a, b) {return a + b;}, 0);
@@ -88,7 +92,7 @@ function draw() {
     }
 }
 
-//Computer Bad-Ass Genius Happening Here.
+// Computer Bad-Ass Genius Happening Here.
 
 function CompStart () {
   gameType = 'P1vsComp';
@@ -135,7 +139,7 @@ function addTally () {
 
 // Manipulating DOM - Separation of concerns
 
-//Refreshing the board based on the what is in the board array
+// Refreshing the board based on the what is in the board array
 
 function displayBoard () {
   for (var i=0; i<board.length; i++) {
@@ -156,7 +160,7 @@ function displayBoard () {
   }
 }
 
-//Resets the board when the game is over or if gameType is changed
+// Resets the board when the game is over or if gameType is changed
 
 function resetBoard () {
   board = [4,5,6,7,8,9,10,11,12];
@@ -175,7 +179,7 @@ function resetScores() {
   document.querySelector('#other-score').innerHTML = '0';
 }
 
-//Animation for winning line
+// Animation for winning line
 
 function winPop() {
   for (i = 0; i < winCombs[winningArray].length; i++) {
@@ -183,7 +187,7 @@ function winPop() {
   }
 }
 
-//Animation for a draw/tie
+// Animation for a draw/tie
 
 function drawPop() {
   for (i=0; i<board.length;i++) {
@@ -220,4 +224,4 @@ playerNum.addEventListener('click', changeGameType);
 // functions:
 // win bouncing borders as well.
 // improve computer player logic
-// When explaining - say really refactored code so is KISS, DRY, Separation of Concerns.
+// Refactored code so is KISS, DRY, Separation of Concerns.

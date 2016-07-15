@@ -16,11 +16,10 @@
   height: 32%;
   margin: 0px auto;
   text-align: center;
-  border-color: white;
   color: white;
+  border-color: white;
   font-size: 7em;
   vertical-align: top;
-  transition:.5s linear .5s;
 }
 
 #box-0, #box-3, #box-6 {
@@ -81,14 +80,6 @@ img {
   filter: invert(1);
   background-color: white;
 }
-
-/*footer {
-  color: white;
-  font-size: 1em;
-  font-weight: 100;
-  text-align: right;
-  margin-top: 5em;
-}*/
 
 @media(max-width:30em) {
   #container {
