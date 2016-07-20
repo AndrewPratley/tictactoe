@@ -5,9 +5,14 @@
 }
 
 #container {
-  margin: 9em auto 0px auto;
+  margin: 5em auto 5em auto;
   width: 30em;
   height: 30em;
+  -webkit-transform : rotate(0deg);
+  -moz-transform : rotate(0deg);
+  -ms-transform : rotate(0deg);
+  -o-transform : rotate(0deg);
+  transform : rotate(0deg);
 }
 
 .outer-boxes {
@@ -62,7 +67,7 @@ p {
 }
 
 #player-score {
-  margin: 0 3.35em 0 2.5em;
+  margin: 0 3.35em 0 1.8em;
 }
 
 #other-score {
@@ -76,13 +81,17 @@ p {
 img {
   display: inline;
   width: 2em;
-  margin: 0 0 0 4.5em;
   -webkit-filter: invert(1);
   filter: invert(1);
   background-color: white;
 }
 
-@media(max-width:30em) {
+.players {
+  margin: 0 0 0 4.5em;
+}
+
+
+@media(max-width:35em) {
   #container {
     width: 20em;
     height: 20em;
@@ -92,7 +101,7 @@ img {
     width: 20em;
   }
   #player-score {
-    margin: 0 2.35em 0 2em;
+    margin: 0 2.35em 0 1.3em;
     font-size: 2.5em;
   }
   #other-score {
@@ -100,9 +109,13 @@ img {
     font-size: 2.5em;
   }
   img {
-    margin: 0 0 0 3em;
     width: 1.5em;
   }
+
+  .players {
+    margin: 0 0 0 3em;
+  }
+
   .outer-boxes {
     font-size: 3.6em;
     padding-top: 0.2em;

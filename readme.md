@@ -44,6 +44,7 @@ I sure enjoyed it though and super happy with the outcome :)
 
 - Computer Error Sound - License: Attribution 3.0 | Recorded by Mike Koenig
 - Robot Blip Sounds - License: Attribution 3.0 | Recorded by Marianne Gagnon
-- People Icons made by Freepik in Interface and People from www.flaticon.com
+- People and Spin Icons made by Freepik in Interface and People from www.flaticon.com
+- Stop Icon made by Chanut is Industries in Multimedia from www.flaticon.com
 
 Thanks for reading ![alt text](http://www.eevblog.com/forum/Smileys/default/icon_smile_thumbsup.gif "thumbs up")

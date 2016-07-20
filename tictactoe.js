@@ -5,6 +5,7 @@ console.log('TicTacToe');
 
 var container = document.querySelector('#container');
 var playerNum = document.querySelector('#player-number');
+var spinner = document.querySelector('#spinner');
 var board = [4,5,6,7,8,9,10,11,12];
 var winCombs = [
   [0,1,2],
@@ -23,6 +24,9 @@ var p2Tally = 0;
 var CompTally = 0;
 var actionAllowed = true;
 var winningArray = 0;
+var degree = 0;
+var spinning = false;
+var spins;
 
 // Audio variables
 
@@ -212,6 +216,33 @@ function changeGameType () {
 // At beginning of game - refresh the board - this will show's who's turn it is.
 
 displayBoard();
+
+// Spin it!
+
+function continuousSpin () {
+  if (spinning === false) {
+    document.querySelector('#spinner').src = 'stop.png';
+    spinning = true;
+    spins = setInterval(function() { spin(); },5);
+  } else {
+    document.querySelector('#spinner').src = 'spin.png';
+    spinning = false;
+    clearInterval(spins);
+  }
+}
+
+function spin () {
+  container.style.webkitTransform = 'rotate('+degree+'deg)';
+  container.style.mozTransform    = 'rotate('+degree+'deg)';
+  container.style.msTransform     = 'rotate('+degree+'deg)';
+  container.style.oTransform      = 'rotate('+degree+'deg)';
+  container.style.transform       = 'rotate('+degree+'deg)';
+  degree +=1;
+}
+
+// Trigger - Spin
+
+spinner.addEventListener('click', continuousSpin);
 
 // Trigger - Player 1 always starts
 
