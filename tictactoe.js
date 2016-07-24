@@ -126,6 +126,8 @@ function compMove() {
       turn = null;
       setTimeout(resetBoard, 2000);
     }
+  }else{
+    actionAllowed = true;
   }
 }
 
